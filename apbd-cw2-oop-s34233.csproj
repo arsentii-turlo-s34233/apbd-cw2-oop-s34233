@@ -8,4 +8,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Domain\Equipment\" />
+      <Folder Include="Domain\Users\" />
+      <Folder Include="Services\" />
+      <Folder Include="UI\" />
+    </ItemGroup>
+
 </Project>
