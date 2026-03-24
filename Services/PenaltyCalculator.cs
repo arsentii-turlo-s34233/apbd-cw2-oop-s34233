@@ -4,6 +4,7 @@ public static class PenaltyCalculator
 {
     private const decimal PenaltyPerDay = 5m;
 
+    // Calculates penalty fee - 5 PLN per day late, 0 if returned on time
     public static decimal CalculatePenalty(DateTime dueDate, DateTime returnDate)
     {
         if (returnDate <= dueDate)

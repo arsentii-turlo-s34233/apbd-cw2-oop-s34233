@@ -3,6 +3,8 @@ using apbd_cw2_oop_s34233.Domain;
 using apbd_cw2_oop_s34233.Domain.Equipment;
 using apbd_cw2_oop_s34233.Domain.Users;
 using apbd_cw2_oop_s34233.Services;
+
+// Handles all console output - keeps print logic out of Program.cs
 public class ConsoleUI
 {
     private readonly IEquipmentService _equipment;
@@ -61,6 +63,7 @@ public class ConsoleUI
         Console.WriteLine("\n" + _reports.GenerateSummary());
     }
 
+    // Tries to rent — prints result or blocked reason
     public Rental? TryRent(User user, Equipment item, int days)
     {
         try
@@ -76,19 +79,16 @@ public class ConsoleUI
         }
     }
 
+    // Tries to return — prints penalty if late
     public void TryReturn(Rental rental)
     {
         try
         {
-            var r = _rentals.ReturnEquipment((rental.Id));
+            var r = _rentals.ReturnEquipment(rental.Id);
             if (r.PenaltyFee > 0)
-            {
                 Console.WriteLine($"Returned (Late). Penalty: {r.PenaltyFee:C}");
-            }
             else
-            {
                 Console.WriteLine($"Returned: {r} on time. No penalty.");
-            }
         }
         catch (InvalidOperationException ex)
         {

@@ -1,10 +1,11 @@
 namespace apbd_cw2_oop_s34233.Domain.Equipment;
 
+// Laptop-specific fields on top of base Equipment
 public class Laptop : Equipment
 {
     public string Processor { get; set; }
     public int RamGb { get; set; }
-    
+
     public Laptop(string name, string processor, int ramGb) : base(name)
     {
         Processor = processor;
@@ -13,6 +14,6 @@ public class Laptop : Equipment
 
     public override string GetDescription()
     {
-        return $"Laptop: {Name} | Processor: {Processor} | RAM: {RamGb} GB"; 
+        return $"Laptop: {Name} | Processor: {Processor} | RAM: {RamGb} GB";
     }
 }

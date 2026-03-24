@@ -11,6 +11,7 @@ public class ReportService
         _rentals = rentals;
     }
 
+    // Builds a short summary of the whole system state
     public string GenerateSummary()
     {
         var all = _equipment.GetAll();
