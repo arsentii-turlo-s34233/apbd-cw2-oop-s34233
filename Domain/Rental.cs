@@ -16,6 +16,11 @@ public class Rental
     public bool IsActive => ReturnDate == null;
     public bool IsOverdue => IsActive && DateTime.Now > DueDate;
     
+    public RentalStatus Status =>
+        !IsActive ? RentalStatus.Returned :
+        IsOverdue  ? RentalStatus.Overdue :
+        RentalStatus.Active;
+    
     public Rental(UserModel user, EquipmentModel equipment, int rentalDays)
         {
         User = user;
@@ -43,7 +48,7 @@ public class Rental
         
         string shortId = Id.ToString().Substring(0, 8);
         string renterName = $"{User.FirstName} {User.LastName}";
-        string status = IsActive ? "ACTIVE" : "RETURNED";
+        string status = Status.ToString().ToUpper();
 
         return $"Rental [{shortId}] - {Equipment.Name} rented by {renterName} | Due: {DueDate:dd MMM yyyy} | {status}";
     }

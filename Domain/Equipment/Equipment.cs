@@ -4,7 +4,8 @@ public abstract class Equipment
 {
     public Guid Id { get; } = Guid.NewGuid();
     public string Name { get; set; }
-    public bool IsAvailable { get; private set; } = true;
+    public EquipmentStatus Status { get; private set; } = EquipmentStatus.Available;
+    public bool IsAvailable => Status == EquipmentStatus.Available;
     protected  Equipment(string name)
     {
         if (string.IsNullOrWhiteSpace(name))
@@ -13,19 +14,24 @@ public abstract class Equipment
     }
     public void SetAvailable()
     {
-        IsAvailable = true;
+        Status = EquipmentStatus.Available;
     }
 
     public void SetNotAvailable()
     {
-        IsAvailable = false;
+        Status = EquipmentStatus.Rented;
+    }
+
+    public void SetDamages()
+    {
+        Status = EquipmentStatus.Damaged;
     }
     public abstract string GetDescription();
 
     public override string ToString()
     {
         string shortId = Id.ToString().Substring(0, 8);
-        string status = IsAvailable ? "Available" : "Unavailable";
+        string status = Status.ToString();
         return $"[{shortId}] {Name} — {status}";
     }
 

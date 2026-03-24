@@ -20,6 +20,6 @@ public class EquipmentService : IEquipmentService
     {
         var item = GetById(equipmentId)
             ?? throw new KeyNotFoundException($"Equipment with id {equipmentId} does not exist");
-        item.SetNotAvailable();
+        item.SetDamages();
     }
 }
