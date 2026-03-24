@@ -1,5 +1,3 @@
-using apbd_cw2_oop_s34233.Domain.Equipment;
-
 namespace apbd_cw2_oop_s34233.Services;
 using apbd_cw2_oop_s34233.Domain;
 using apbd_cw2_oop_s34233.Domain.Users;
@@ -13,4 +11,5 @@ public interface IRentalService
     IReadOnlyList<Rental> GetActiveRentalsForUser(Guid userId);
     IReadOnlyList<Rental> GetOverdueRentals();
     IReadOnlyList<Rental> GetAllRentals();
+    void AddRental(Rental rental);
 }

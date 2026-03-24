@@ -68,9 +68,7 @@ public class Program
         Console.WriteLine("\n[SCENARIO] Late return:");
         camera.SetAvailable();
         var lateRental = new Rental(student2, camera, 1, DateTime.Now.AddDays(-3));
-
-
-        ui.TryReturn(lateRental);
+        rentalService.AddRental(lateRental);
 
         ui.TryReturn(lateRental);
         ui.PrintActiveRentalsForUser(student1);

@@ -1,5 +1,3 @@
-using apbd_cw2_oop_s34233.Domain;
-
 namespace apbd_cw2_oop_s34233.Services;
 
 public static class PenaltyCalculator

@@ -56,4 +56,9 @@ public class RentalService : IRentalService
     public IReadOnlyList<Rental> GetActiveRentalsForUser(Guid userId) => _rentals.Where (r => r.User.Id == userId && r.IsActive).ToList().AsReadOnly();
     public IReadOnlyList<Rental> GetOverdueRentals() => _rentals.Where (r => r.IsOverdue).ToList().AsReadOnly();
     public IReadOnlyList<Rental> GetAllRentals() => _rentals.AsReadOnly();
+    public void AddRental(Rental rental)
+    {
+        _rentals.Add(rental);
+        rental.Equipment.SetNotAvailable();
+    }
 }
