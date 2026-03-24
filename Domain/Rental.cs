@@ -23,6 +23,13 @@ public class Rental
         RentedOn = DateTime.Now;
         DueDate = RentedOn.AddDays(rentalDays);
         }
+    internal Rental(UserModel user, EquipmentModel equipment, int rentalDays, DateTime dueDate)
+    {
+        User = user;
+        Equipment = equipment;
+        RentedOn = DateTime.Now;
+        DueDate = dueDate;
+    }
 
     public void CompleteReturn(decimal penaltyAmount)
     {
